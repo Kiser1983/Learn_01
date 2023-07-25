@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class LifeTime : MonoBehaviour
 {
+    private void Awake()
+    {
+        Debug.Log("Awake " + gameObject.name);
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("OnEnable " + gameObject.name);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +23,6 @@ public class LifeTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Update " + gameObject.name);
+      //  Debug.Log("Update " + gameObject.name);
     }
 }
