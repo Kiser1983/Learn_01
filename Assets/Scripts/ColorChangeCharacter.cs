@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ColorChangeCharacter : MonoBehaviour
 {
-    public Color startColor;
+    private Color startColor;
     public Color endColor;
     public float duration = 2f;
 
     private Renderer characterRenderer;
+    private SpriteRenderer characterSpriteRenderer;
 
     private void Start()
     {
         characterRenderer = GetComponent<Renderer>();
+        characterSpriteRenderer = GetComponent<SpriteRenderer>();
+        startColor = characterSpriteRenderer.color;
         StartCoroutine(ChangeColor());
     }
 
@@ -24,21 +27,21 @@ public class ColorChangeCharacter : MonoBehaviour
             while (t < 1f)
             {
                 t += Time.deltaTime / duration;
-                characterRenderer.material.color = Color.Lerp(startColor, endColor, t);
+                characterSpriteRenderer.color = Color.Lerp(startColor, endColor, t);
                 yield return null;
             }
 
-            yield return new WaitForSeconds(0.5f); // Optional delay before changing back
+            yield return new WaitForSeconds(0.5f); 
 
             t = 0f;
             while (t < 1f)
             {
                 t += Time.deltaTime / duration;
-                characterRenderer.material.color = Color.Lerp(endColor, startColor, t);
+                characterSpriteRenderer.color = Color.Lerp(endColor, startColor, t);
                 yield return null;
             }
 
-            yield return new WaitForSeconds(0.5f); // Optional delay before changing color again
+            yield return new WaitForSeconds(0.5f); 
         }
     }
 }

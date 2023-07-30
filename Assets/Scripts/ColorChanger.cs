@@ -8,12 +8,12 @@ public class ColorChanger : MonoBehaviour
     [SerializeField] private float _duration;
     [SerializeField] private Color _targetColor;
     private float _runningTime;
-    private Color _statrColor;
+    private Color _startColor;
 
     private void Start()
     {
         target = GetComponent<SpriteRenderer>();
-        _statrColor = target.color;
+        _startColor = target.color;
     }
 
     void Update()
@@ -26,7 +26,7 @@ public class ColorChanger : MonoBehaviour
             // Color newColor = new Color(_targetColor.r * notmalizeRunningTime, _targetColor.g * notmalizeRunningTime, _targetColor.b * notmalizeRunningTime);
             //  target.color = newColor;
 
-            target.color = Color.Lerp(_statrColor, _targetColor, notmalizeRunningTime);
+            target.color = Color.Lerp(_startColor, _targetColor, notmalizeRunningTime);
         }
 
     }
